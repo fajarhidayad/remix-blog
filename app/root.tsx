@@ -4,19 +4,63 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
+import type { LinksFunction, LoaderFunction } from "@remix-run/node";
+import stylesheet from "~/styles/tailwind.css?url";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import {
+  NonFlashOfWrongThemeEls,
+  Theme,
+  ThemeProvider,
+  useTheme,
+} from "./utils/theme-provider";
+import clsx from "clsx";
+import { getThemeSession } from "./utils/theme.server";
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export type LoaderData = {
+  theme: Theme | null;
+};
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const themeSession = await getThemeSession(request);
+
+  const data: LoaderData = {
+    theme: themeSession.getTheme(),
+  };
+
+  return data;
+};
+
+export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: stylesheet,
+  },
+];
+
+export function App() {
+  const data = useLoaderData<LoaderData>();
+
+  const [theme] = useTheme();
   return (
-    <html lang="en">
+    <html lang="en" className={clsx(theme)}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <NonFlashOfWrongThemeEls ssrTheme={Boolean(data.theme)} />
       </head>
-      <body>
-        {children}
+      <body className="text-primary dark:bg-d-background dark:text-d-text-primary bg-gray-100">
+        <div className="mx-auto flex min-h-screen max-w-4xl flex-col">
+          <Nav />
+          <main className="py-5">
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -24,6 +68,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function App() {
-  return <Outlet />;
+export default function AppWithProviders() {
+  const data = useLoaderData<LoaderData>();
+
+  return (
+    <ThemeProvider specifiedTheme={data.theme}>
+      <App />
+    </ThemeProvider>
+  );
 }
