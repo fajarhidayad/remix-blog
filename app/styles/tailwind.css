@@ -10,51 +10,14 @@
 
 :root {
   --background-body: #fff;
-  --text-main: #36393b;
-  --text-secondary: #6b6f72;
-  --primary-color: #548e9b;
-  --dark-background-body: #202122;
-  --dark-text-main: #dfdfdf;
-  --dark-text-secondary: #ccc;
 }
 
 @layer base {
   html {
     font-family: Merriweather, serif;
   }
-
-  /* latin */
-  @font-face {
-    font-family: "Fira Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
-      U+2215, U+FEFF, U+FFFD;
-  }
-
-  @font-face {
-    font-family: "Merriweather";
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
-      U+2215, U+FEFF, U+FFFD;
-  }
-
-  @font-face {
-    font-family: "Merriweather";
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
-      U+2215, U+FEFF, U+FFFD;
-  }
 }
 
 .navlink {
-  @apply before:bg-text-secondary hover:[&:not(.selected)]:text-primary relative block min-w-[70px] px-[5px] py-2.5 text-center text-inherit no-underline before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:scale-x-0 before:transition-transform before:duration-[0.3s] before:ease-[ease] before:content-[''] md:ml-5 hover:before:md:scale-x-100 [&:not(.selected)]:opacity-70;
+  @apply dark:before:bg-secondary before:bg-primary-1 relative block min-w-[70px] px-[5px] py-2.5 text-center text-inherit no-underline before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:scale-x-0 before:transition-transform before:duration-[0.3s] before:ease-[ease] before:content-[''] md:ml-5 hover:before:md:scale-x-100 [&:not(.selected)]:opacity-70 hover:[&:not(.selected)]:text-gray-700 dark:hover:[&:not(.selected)]:text-gray-200;
 }

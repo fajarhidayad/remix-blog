@@ -5,16 +5,19 @@ export default {
   darkMode: "class",
   content: ["./app/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    container: {
+      center: true,
+      padding: "1rem",
+    },
     extend: {
       colors: {
-        background: "var(--background-body)",
-        "text-primary": "var(--text-main)",
-        "text-secondary": "var(--text-secondary)",
-        "d-background": "var(--dark-background-body)",
-        "d-text-primary": "var(--dark-text-main)",
-        "d-text-secondary": "var(--dark-text-secondary)",
-        primary: "var(--primary-color)",
-        gray: colors.gray,
+        primary: {
+          1: "#40B5AD",
+          2: "#008080",
+        },
+        secondary: "#9FE2BF",
+        dark: colors.slate[800],
+        light: colors.slate[100],
       },
     },
     fontFamily: {

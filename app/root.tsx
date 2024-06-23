@@ -53,8 +53,8 @@ export function App() {
         <Links />
         <NonFlashOfWrongThemeEls ssrTheme={Boolean(data.theme)} />
       </head>
-      <body className="text-primary dark:bg-d-background dark:text-d-text-primary bg-gray-100">
-        <div className="mx-auto flex min-h-screen max-w-4xl flex-col">
+      <body className="bg-light dark:bg-dark text-gray-800 dark:text-gray-100">
+        <div className="container mx-auto flex min-h-screen max-w-4xl flex-col">
           <Nav />
           <main className="py-5">
             <Outlet />
