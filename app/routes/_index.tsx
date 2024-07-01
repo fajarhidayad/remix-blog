@@ -34,6 +34,21 @@ const textVariant = {
   },
 };
 
+const certificates = [
+  {
+    href: "https://www.coursera.org/account/accomplishments/specialization/certificate/A4VMBTJ2NBQK",
+    title: "Meta Front-End Developer Specialization",
+    description: "Coursera",
+    date: "September 2023",
+  },
+  {
+    href: "https://www.coursera.org/account/accomplishments/certificate/QAUPASQMA9ER",
+    title: "Database Structures and Management with MySQL",
+    description: "Coursera",
+    date: "May 2024",
+  },
+];
+
 export default function Index() {
   return (
     <div className="py-10">
@@ -161,6 +176,47 @@ export default function Index() {
       </section>
 
       <section className="my-10 py-10">
+        <h1 className="mb-5 text-center text-2xl font-semibold">Experiences</h1>
+        <div className="mb-8 grid grid-cols-3 gap-x-5">
+          <div className="col-span-1 place-content-center border-r-2 border-r-primary-1 px-5">
+            <h2 className="text-center text-xl font-semibold">2021</h2>
+            <h3 className="text-center">Freelance</h3>
+          </div>
+          <ul className="col-span-2">
+            <li className="mb-4">
+              <h4 className="text-lg font-semibold">Korlantas Polri</h4>
+              <p className="">
+                Create a responsive landing page using Tailwind CSS and Laravel
+                8
+              </p>
+            </li>
+            <li className="mb-4">
+              <h4 className="text-lg font-semibold">Coffeehub</h4>
+              <p className="">
+                Create a whole frontend page for CoffeeHub shop
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div className="mb-8 grid grid-cols-3 gap-x-5">
+          <div className="col-span-1 place-content-center border-r-2 border-r-primary-1 px-5">
+            <h2 className="text-center text-xl font-semibold">2020</h2>
+            <h3 className="text-center">Intern</h3>
+          </div>
+          <ul className="col-span-2">
+            <li className="mb-4">
+              <h4 className="text-lg font-semibold">Gojek Clone</h4>
+              <p className="">
+                Create mobile app with functionality like GoJek App. The
+                technology used for building this app is React Native and
+                Firebase.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="my-10 py-10">
         <h1 className="mb-8 text-center text-2xl font-semibold">
           My Tech Stacks
         </h1>
@@ -221,18 +277,9 @@ export default function Index() {
         </h1>
 
         <ul className="grid grid-cols-1 gap-5 md:grid-cols-2">
-          <CertificationItem
-            href="https://www.coursera.org/account/accomplishments/specialization/certificate/A4VMBTJ2NBQK"
-            title="Meta Front-End Developer Specialization"
-            description="Coursera"
-            date="September 2023"
-          />
-          <CertificationItem
-            href="https://www.coursera.org/account/accomplishments/certificate/QAUPASQMA9ER"
-            title="Database Structures and Management with MySQL"
-            description="Coursera"
-            date="May 2024"
-          />
+          {certificates.map((item) => (
+            <CertificationItem key={item.title} {...item} />
+          ))}
         </ul>
       </section>
 

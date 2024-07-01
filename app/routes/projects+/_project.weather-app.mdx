@@ -1,0 +1,96 @@
+---
+meta:
+  - title: Weather App
+  - link: weather-app
+    content: Simple weather forecasting app made with React + Vite
+    publishDate: 17 Nov 2023
+headers:
+  Cache-Control: no-cache
+---
+
+import Image from "../../components/Image.tsx";
+import ImageSrc from "../../assets/img/Weza-Ripoto.png";
+export const meta = frontmatter.meta;
+
+<Image
+  src={ImageSrc}
+  alt={"Weather App Image"}
+  caption="Weather App Screenshot"
+/>
+
+## Intro
+
+A simple Weather App created using React and Vite with Weather API.
+The primary goal of this project is to showcase my skills in frontend development using modern tools and technologies.
+
+The app provides real-time weather information for any city in the world, featuring a clean and responsive user interface from [devchallenges.io](https://legacy.devchallenges.io/challenges/mM1UIenRhK808W8qmLWv).
+
+## Key Features
+
+- **Real-time Weather Data**: Fetches current weather conditions and forecasts from an external API based on user location.
+- **City Search**: User can search any city to get weather updates.
+- **Responsive Design**: The app is fully responsive and works well on both desktop and mobile devices.
+
+## Tech Stack
+
+- **React**: For building the user interface.
+- **Tailwindcss**: Main styling.
+- **TypeScript**: Primary language used in this project for better type inference.
+- **Axios**: For making an HTTP requests.
+- **Framer Motion**: For animation.
+
+## Setup
+
+If you want to try in your own local development, you can follow this step by step:
+
+1. **Clone the project**
+
+```bash
+git clone https://github.com/fajarhidayad/weza-ripoto.git
+cd weza-ripoto
+```
+
+2. **Get weather API key**
+
+Sign up at [Free Weather API](https://www.weatherapi.com/) and get the key
+
+3. **Copy API key and paste it to .env.copy**
+
+```.env
+VITE_APP_TITLE="Weza Ripoto"
+VITE_WEATHER_API_KEY=(PLACE IT HERE)
+VITE_WEATHER_BASE_URL=http://api.weatherapi.com/v1/forecast.json
+```
+
+4. **Rename .env file**
+
+Rename **.env.copy** file into **.env**
+
+5. **Install dependencies**
+
+```bash
+# npm
+npm install
+
+# pnpm
+pnpm install
+```
+
+6. **Start development server**
+
+```bash
+# npm
+npm run dev
+
+# pnpm
+pnpm dev
+```
+
+7. **Server run at http://localhost:5173**
+
+## Conclusion
+
+This Weather App project was a great opportunity to delve deeper into React and explore the benefits of using Vite as a build tool. I’m excited to continue building more projects and honing my skills in modern frontend development.
+
+- Live demo: [Weza Ripoto](https://weza-ripoto.vercel.app)
+- Source code: [GitHub](https://github.com/fajarhidayad/weza-ripoto)

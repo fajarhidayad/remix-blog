@@ -1,5 +1,6 @@
 import { LoaderFunction, MetaFunction, json } from "@remix-run/node";
-import { Link, useLoaderData } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
+import BlogItem from "~/components/BlogItem";
 
 export const meta: MetaFunction = () => {
   return [
@@ -25,34 +26,12 @@ export default function BlogPage() {
           <BlogItem
             key={item}
             title={posts[item].meta[0].title}
-            href={posts[item].meta[1].link}
+            href={`${posts[item].meta[1].link}`}
             description={posts[item].meta[1].content}
             publishDate={posts[item].meta[1].publishDate}
           />
         ))}
       </ul>
     </div>
-  );
-}
-
-function BlogItem(props: {
-  href: string;
-  title: string;
-  description: string;
-  publishDate: string;
-}) {
-  return (
-    <li className="dark:to-secondary to-primary-2 from-primary-1 my-5 rounded-xl bg-gradient-to-r p-1">
-      <div className="flex flex-col space-y-5 rounded-lg bg-slate-100 p-5 dark:bg-slate-700">
-        <Link
-          to={`/blog/${props.href}`}
-          className="decoration-primary-1 text-3xl font-semibold underline"
-        >
-          {props.title}
-        </Link>
-        <p className="text-xl">{props.description}</p>
-        <p className="font-semibold">{props.publishDate}</p>
-      </div>
-    </li>
   );
 }
