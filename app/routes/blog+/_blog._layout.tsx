@@ -61,7 +61,7 @@ export default function BlogLayout() {
       </motion.header>
       <motion.article
         variants={animateVariant}
-        className="prose mx-auto max-w-3xl text-base dark:prose-invert md:text-xl"
+        className="prose mx-auto max-w-3xl text-base leading-[1.8] dark:prose-invert md:prose-lg lg:prose-xl"
       >
         <Outlet />
       </motion.article>

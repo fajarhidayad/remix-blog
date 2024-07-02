@@ -10,4 +10,115 @@ headers:
 
 export const meta = frontmatter.meta;
 
-On the way
+## Intro
+
+Ketika belajar bahasa pemrograman, struktur data merupakan salah satu elemen wajib untuk dipelajari
+karena membantu dalam bagaimana memanipulasi data dan meningkatkan performa kode agar lebih optimal.
+
+Pada kesempatan kali ini saya ingin membagikan struktur data Linked List dimana bentuknya yang hampir mirip seperti Array dan bagaimana
+cara implementasinya menggunakan Javascript.
+
+## Apa itu Linked List
+
+Linked List merupakan struktur data linear dimana data disimpan secara berurutan. Berbeda dengan array yang memiliki index
+pada setiap elemen, Linked List menyimpan 2 komponen dalam bentuk `Node` yang didalamnya terdiri atas:
+
+1. **Data/Value**: Nilai atau data yang disimpan dalam node.
+2. **Pointer (Next)**: Referensi dari node selanjutnya.
+
+Lalu pada Linked List terdapat **Head** atau referensi Node awal,
+dan **Tail** atau referensi Node akhir yang dimana nilai Next-nya adalah `null`.
+
+## Beberapa Jenis Linked List
+
+1. **Singly Linked List**: Pada setiap node hanya memiliki 1 pointer yaitu referensi node selanjutnya (next), dan node terakhir (tail) memiliki nilai nilai `null`.
+2. **Doubly Linked List**: Pada setiap node memiliki 2 pointer, pointer pertama merupakan referensi node selanjutnya (next) dan pointer kedua adalah referensi node sebelumnya (prev).
+3. **Circular Linked List**: Node terakhir memiliki pointer dari node pertama, sehingga membentuk struktur yang sirkular(melingkar).
+
+## Implementasi
+
+Pada implementasinya disini menggunakan bahasa pemrograman Javascript. Dimulai dengan membuat
+class `Node` terlebih dahulu lalu selanjutnya `LinkedList`.
+
+### Node
+
+Class `Node` merepresentasikan sebagai satu elemen pada `Linked List`. Properti yang ada di dalam `Node`
+adalah `value` untuk menyimpan nilai dan `next` sebagai pointer node selanjutnya.
+
+```javascript
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+```
+
+### LinkedList
+
+Class ini merupakan bagian utama untuk mengelola `node` di dalam `Linked List` beserta beberapa method
+seperti `push`, `pop`, `remove` dan seterusnya. Class ini memiliki 3 properti utama yaitu:
+
+1. **head**: Untuk menetapkan node awal pada `Linked List`.
+2. **tail**: Node akhir pada `Linked List`.
+3. **length**: Jumlah elemen yang ada pada `Linked List`.
+
+```javascript
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+}
+```
+
+### Method
+
+Jika dalam struktur data `Array` sudah memiliki method bawaan untuk mengelola data,
+maka `LinkedList` juga memiliki beberapa method yaitu:
+
+#### push
+
+Sama seperti `Array`, method push digunakan untuk memasukkan data ke dalam `LinkedList` di posisi paling akhir.
+Pertama buat terlebih dahulu node baru dan disimpan ke dalam variabel `newNode`. Setelah itu dilakukan pengecekan
+apabila `head` bernilai `null` atau merupakan sebuah list kosong, maka `head` & `tail` diisi newNode. Tetapi apabila
+tidak maka pointer `next` pada `tail` harus diisi oleh `newNode` terlebih dahulu, lalu setelahnya `tail` diisi dengan `newNode`.
+Berikut contoh kodenya:
+
+```javascript
+push(value) {
+  const newNode = new Node(value)
+
+  if(this.head === null) {
+    this.head = newNode;
+    this.tail = this.head
+  } else {
+    this.tail.next = newNode;
+    this.tail = newNode
+  }
+
+  this.length++
+  return this
+}
+```
+
+## Contoh Penggunaan
+
+```javascript
+const list = new LinkedList();
+
+list.push(1);
+list.push(2);
+list.push(3);
+
+console.log(list);
+```
+
+## Kesimpulan
+
+Linked list merupakan salah satu struktur data yang penting untuk dipahami dalam pemrograman dan
+jika dibandingkan dengan Array Linked list memiliki beberapa kelebihan dan kekurangannya masing-masing.
+Mungkin akan saya jadikan artikel tersendiri untuk membahasnya.
+
+Terima kasih sudah membaca.
