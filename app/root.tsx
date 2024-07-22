@@ -18,6 +18,7 @@ import {
 } from "./utils/theme-provider";
 import clsx from "clsx";
 import { getThemeSession } from "./utils/theme.server";
+import MobileNav from "./components/MobileNav";
 
 export type LoaderData = {
   theme: Theme | null;
@@ -53,9 +54,10 @@ export function App() {
         <Links />
         <NonFlashOfWrongThemeEls ssrTheme={Boolean(data.theme)} />
       </head>
-      <body className="bg-light dark:bg-dark text-gray-800 dark:text-gray-100">
-        <div className="container mx-auto flex min-h-screen max-w-4xl flex-col">
+      <body className="bg-light text-gray-800 dark:bg-dark dark:text-gray-100">
+        <div className="container relative mx-auto flex min-h-screen max-w-4xl flex-col">
           <Nav />
+          <MobileNav />
           <main className="py-5">
             <Outlet />
           </main>
