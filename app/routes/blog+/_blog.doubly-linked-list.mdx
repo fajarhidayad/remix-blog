@@ -1,0 +1,72 @@
+---
+meta:
+  - title: Doubly Linked List
+  - link: doubly-linked-list
+    content: Another variant of Linked List
+    publishDate: 31 Jul 2024
+headers:
+  Cache-Control: no-cache
+---
+
+export const meta = frontmatter.meta;
+
+## Intro
+
+Setelah membahas `Singly Linked List` pada artikel sebelumnya, maka selanjutnya saya akan membahas
+tentang varian lain pada `Linked List` yaitu `Doubly Linked List`. Lalu apa beda dan kelebihannya
+dibandingkan dengan `Singly Linked List`? Namun sebelumnya Anda harus mengerti apa itu `Linked List`
+yang sudah ditulis pada artikel sebelumnya. Jika sudah mari kita bahas:
+
+## Perbedaan
+
+TIdak jauh berbeda dengan yang `Singly` pada varian ini, hanya saja untuk setiap `node` memiliki
+properti tambahan yaitu `prev`. Sehingga `node` pada `doubly` memiliki 3 properti yaitu `value` untuk menampung
+nilai node, `next` untuk menampung referensi node selanjutnya, dan `prev` untuk menampung referensi nilai sebelumnya.
+
+Berikut contoh kode pada class `Node`:
+
+```javascript
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+    // Properti baru `prev` untuk referensi node sebelumnya
+    this.prev = null;
+  }
+}
+```
+
+Untuk constructor class `Doubly Linked List` sama seperti `Singly` karena yang berbeda
+hanya pada `Node`, jadi saya tidak perlu menambahkannya lagi pada artikel ini.
+
+## Method
+
+Untuk methodnya sendiri juga hampir sama seperti `Singly`, namun hanya ditambahkan properti
+`prev` untuk mereferensikan `node` sebelumnya.
+
+### push
+
+```javascript
+push(value) {
+  // Buat node baru
+  const newNode = new Node(value)
+
+// Lakukan pengecekan apabila list kosong
+  if(this.head === null) {
+    this.head = newNode
+    this.tail = this.head
+  }
+  // Apabila tidak kosong maka tambahkan node baru dari tail
+  else {
+    this.tail.next = newNode
+    // Disini ada perbedaan yaitu perlu mereferensikan nilai prev
+    // pada node terlebih dahulu, sebelum tail diganti dengan node baru
+    newNode.prev = this.tail
+    this.tail = newNode
+  }
+
+// Selebihnya sama
+  this.length++
+  return this
+}
+```
